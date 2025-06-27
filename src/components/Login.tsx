@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { LOGIN_BG, USER_AVATAR } from "../utils/constants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>("");
@@ -52,13 +53,19 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current!.value,
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               if (auth.currentUser) {
-                const { uid, displayName, email } = auth.currentUser;
+                const { uid, displayName, email, photoURL } = auth.currentUser;
                 console.log(user);
                 dispatch(
-                  addUser({ uid: uid, displayName: displayName, email: email })
+                  addUser({
+                    uid: uid,
+                    displayName: displayName,
+                    email: email,
+                    photoURL: photoURL,
+                  })
                 );
               }
             })
@@ -78,7 +85,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/75b0ed49-75ab-4a63-bd45-37bc2c95cb73/web/IN-en-20250623-TRIFECTA-perspective_ae5833b7-6ce5-4e88-853e-014f38c506f1_large.jpg" />
+        <img src={LOGIN_BG} />
       </div>
       <div>
         <form
