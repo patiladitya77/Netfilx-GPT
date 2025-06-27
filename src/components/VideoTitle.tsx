@@ -5,7 +5,7 @@ type VideoTitleProps = {
 
 const VideoTitle = ({ title, overview }: VideoTitleProps) => {
   return (
-    <div className="pt-[20%] px-24 absolute text-white bg-gradient-to-r from-black w-screen aspect-video">
+    <div className="pt-[18%] px-24 absolute text-white bg-gradient-to-r from-black w-screen aspect-video">
       <h1 className="font-bold text-3xl">{title}</h1>
       <p className="py-6 text-lg w-1/4">{overview}</p>
       <div>

@@ -8,7 +8,8 @@ const MainContainer = () => {
     (store: RootState) => store?.movies?.nowPlayingMovies
   );
   if (!movies) return;
-  const { original_title, overview, id } = movies[2];
+
+  const { original_title, overview, id } = movies[1];
   return (
     <div>
       <VideoTitle title={original_title} overview={overview} />
