@@ -13,7 +13,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store: RootState) => store.user);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, displayName, email } = user;
         dispatch(addUser({ uid: uid, displayName: displayName, email: email }));
@@ -22,6 +22,7 @@ const Header = () => {
         dispatch(removeUser());
         navigate("/");
       }
+      return () => unsubscribe();
     });
   }, []);
 
