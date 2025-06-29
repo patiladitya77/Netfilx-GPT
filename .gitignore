@@ -14,6 +14,7 @@ dist-ssr
 tmdb.ts
 structure.md
 geminiConstants.ts
+.env
 
 # Editor directories and files
 .vscode/*
