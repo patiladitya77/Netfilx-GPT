@@ -33,7 +33,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -58,7 +57,6 @@ const Login = () => {
             .then(() => {
               if (auth.currentUser) {
                 const { uid, displayName, email, photoURL } = auth.currentUser;
-                console.log(user);
                 dispatch(
                   addUser({
                     uid: uid,
