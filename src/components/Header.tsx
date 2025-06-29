@@ -21,7 +21,7 @@ const Header = () => {
   const handleGptSearch = () => {
     dispatch(toggleGptSeachView());
   };
-  const handleLanguageChange = (e) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(changeLanguage(e.target.value));
   };
   const user = useSelector((store: RootState) => store.user);

@@ -13,6 +13,7 @@ dist-ssr
 *.local
 tmdb.ts
 structure.md
+geminiConstants.ts
 
 # Editor directories and files
 .vscode/*
