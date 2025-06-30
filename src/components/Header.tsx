@@ -61,7 +61,7 @@ const Header = () => {
     <div className=" w-screen absolute px-8 py-2 bg-gradient-to-br from-black z-10 flex flex-col md:flex-row justify-between">
       <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO} />
       {user && (
-        <div className="flex p-3">
+        <div className="flex p-3 justify-between">
           {isGptpage && (
             <select
               className="p-2 m-2 bg-gray-700 text-white"
@@ -80,7 +80,7 @@ const Header = () => {
           >
             {isGptpage ? "Home" : "GPT Search"}
           </button>
-          <img className="w-12 h-12 p-2" src={USER_AVATAR} />
+          <img className="hidden md:block w-12 h-12 p-2" src={USER_AVATAR} />
           <button onClick={handleLogOut} className="text-white font-bold">
             Sign out
           </button>
