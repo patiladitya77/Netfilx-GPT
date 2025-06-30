@@ -58,8 +58,8 @@ const Header = () => {
     navigate("/");
   };
   return (
-    <div className=" w-screen absolute px-8 py-2 bg-gradient-to-br from-black z-10 flex justify-between">
-      <img className="w-44" src={NETFLIX_LOGO} />
+    <div className=" w-screen absolute px-8 py-2 bg-gradient-to-br from-black z-10 flex flex-col md:flex-row justify-between">
+      <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO} />
       {user && (
         <div className="flex p-3">
           {isGptpage && (
