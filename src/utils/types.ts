@@ -16,7 +16,7 @@ export type TrailerVideo = {
 };
 export type User = {
   uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
 };
