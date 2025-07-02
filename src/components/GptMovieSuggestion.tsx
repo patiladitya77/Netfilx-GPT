@@ -6,8 +6,9 @@ const GptMovieSuggestion = () => {
   const gpt = useSelector((store: RootState) => store.gpt);
   const { movieNames, movieResults, isQueried } = gpt;
 
-  if (isQueried && (!movieResults || !movieNames)) return <Spinner />;
   if (!isQueried) return null;
+  if (!movieNames || !movieResults) return <Spinner />;
+
   return (
     <div className="p-4 m-4 bg-black text-white bg-opacity-70">
       <div>

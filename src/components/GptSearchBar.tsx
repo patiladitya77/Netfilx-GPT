@@ -6,6 +6,11 @@ import ai from "../utils/gemini";
 import { API_OPTIONS } from "../utils/tmdb";
 import { addGptMovieResults, queried } from "../utils/gptSlice";
 
+type Movie = {
+  title?: string;
+  original_title?: string;
+};
+
 const GptSearchBar = () => {
   const langKey = useSelector((store: RootState) => store.config.lang);
   const searchText = useRef<HTMLInputElement>(null);
@@ -47,7 +52,7 @@ const GptSearchBar = () => {
     const filteredResults = tmdbResults.map((movies, idx) => {
       const target = gptMovies[idx].trim().toLowerCase();
       return movies.filter(
-        (m) =>
+        (m: Movie) =>
           m.title?.toLowerCase() === target ||
           m.original_title?.toLowerCase() === target
       );
@@ -70,14 +75,14 @@ const GptSearchBar = () => {
         <input
           ref={searchText}
           type="text"
-          placeholder={lang[langKey].gptSearchPlaceholder}
+          placeholder={lang[langKey as keyof typeof lang].gptSearchPlaceholder}
           className="m-4 p-4 col-span-9"
         />
         <button
           className="bg-red-700 rounded-lg text-white col-span-3 m-4 py-2 px-4"
           onClick={handleGptSearch}
         >
-          {lang[langKey].search}
+          {lang[langKey as keyof typeof lang].search}
         </button>
       </form>
     </div>
