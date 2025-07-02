@@ -1,5 +1,5 @@
 export const fireConfig = {
-  apiKey: "AIzaSyDj7DYeGgkMvuA8vBH3gYTmCZjZ3KiAzTY",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "netflix-gpt-12d56.firebaseapp.com",
   projectId: "netflix-gpt-12d56",
   storageBucket: "netflix-gpt-12d56.firebasestorage.app",
