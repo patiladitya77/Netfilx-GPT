@@ -14,3 +14,9 @@ export type TrailerVideo = {
   site: string;
   type: string;
 };
+export type User = {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+};
