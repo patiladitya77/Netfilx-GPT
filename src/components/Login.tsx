@@ -34,10 +34,10 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage);
+        .catch(() => {
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage("Please enter valid credentials");
         });
     } else {
       //signup logic
@@ -67,8 +67,8 @@ const Login = () => {
                 );
               }
             })
-            .catch((error) => {
-              setErrorMessage(error);
+            .catch(() => {
+              setErrorMessage("Please enter valid Credentials");
             });
         })
         .catch((error) => {
