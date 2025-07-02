@@ -111,7 +111,7 @@ const Login = () => {
           <input
             ref={password}
             type="password"
-            placeholder="Passowrd"
+            placeholder="Password"
             className=" bg-gray-800 my-4 p-2 w-full rounded-lg"
           />
           <p className="text-red-400 font-bold">{errorMessage}</p>
