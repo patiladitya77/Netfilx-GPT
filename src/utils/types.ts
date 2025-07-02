@@ -3,6 +3,7 @@ export type Movie = {
   title: string;
   overview: string;
   poster_path: string;
+  original_title: string;
   original_language: string;
 };
 
