@@ -4,7 +4,7 @@ import lang from "../utils/languageConstant";
 import { useRef } from "react";
 import ai from "../utils/gemini";
 import { API_OPTIONS } from "../utils/tmdb";
-import { addGptMovieResults } from "../utils/gptSlice";
+import { addGptMovieResults, queried } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
   const langKey = useSelector((store: RootState) => store.config.lang);
@@ -23,6 +23,7 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearch = async () => {
+    dispatch(queried());
     console.log(searchText);
     if (!searchText.current || searchText.current.value.trim() === "") return;
     const searchQuery =
@@ -42,8 +43,21 @@ const GptSearchBar = () => {
 
     const tmdbResults = await Promise.all(promiseArray);
     console.log(tmdbResults);
+
+    const filteredResults = tmdbResults.map((movies, idx) => {
+      const target = gptMovies[idx].trim().toLowerCase();
+      return movies.filter(
+        (m) =>
+          m.title?.toLowerCase() === target ||
+          m.original_title?.toLowerCase() === target
+      );
+    });
+
     dispatch(
-      addGptMovieResults({ movieNames: gptMovies, movieResults: tmdbResults })
+      addGptMovieResults({
+        movieNames: gptMovies,
+        movieResults: filteredResults,
+      })
     );
   };
 
