@@ -1,14 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+
+import type { TrailerVideo, Movie } from "./types";
+
+interface MoviesState {
+  nowPlayingMovies: Movie[] | null;
+  popularMovies: Movie[] | null;
+  topRatedMovies: Movie[] | null;
+  upcomingMovies: Movie[] | null;
+  trailerVideo: TrailerVideo | null;
+}
+
+const initialState: MoviesState = {
+  nowPlayingMovies: null,
+  popularMovies: null,
+  topRatedMovies: null,
+  upcomingMovies: null,
+  trailerVideo: null,
+};
 
 const movieSlice = createSlice({
   name: "movies",
-  initialState: {
-    nowPlayingMovies: null,
-    popularMovies: null,
-    topRatedMovies: null,
-    upcomingMovies: null,
-    trailerVideo: null,
-  },
+  initialState,
   reducers: {
     addNowPlayingMovies: (state, action) => {
       state.nowPlayingMovies = action.payload;
@@ -22,7 +34,7 @@ const movieSlice = createSlice({
     addupcomingMovies: (state, action) => {
       state.upcomingMovies = action.payload;
     },
-    addTrailerVideo: (state, action) => {
+    addTrailerVideo: (state, action: PayloadAction<TrailerVideo>) => {
       state.trailerVideo = action.payload;
     },
   },

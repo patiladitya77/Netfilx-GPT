@@ -5,3 +5,11 @@ export type Movie = {
   poster_path: string;
   original_language: string;
 };
+
+export type TrailerVideo = {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+};
